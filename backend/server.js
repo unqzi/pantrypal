@@ -37,6 +37,29 @@ app.post("/users", (req, res) => {
   });
 });
 
+app.post("/login", (req, res) => {
+  const { username, password } = req.body;
+  db.query(
+    "SELECT * FROM users WHERE username = ?",
+    [username],
+    (err, result) => {
+      if (err) {
+        res.send(err);
+      } else if (!result[0]) {
+        res.status(404).json({ message: "User not found" });
+      } else {
+        bcrypt.compare(password, result[0].password, (err, match) => {
+          if (match === true) {
+            res.json({ id: result[0].id, username });
+          } else {
+            res.status(401).json({ message: "Invalid password" });
+          }
+        });
+      }
+    },
+  );
+});
+
 app.listen(process.env.PORT, () => {
   console.log("Server is running");
 });
