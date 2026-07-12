@@ -1,4 +1,6 @@
 require("dotenv").config();
+
+const jwt = require("jsonwebtoken");
 const db = require("./db");
 const bcrypt = require("bcrypt");
 const express = require("express");
@@ -50,7 +52,12 @@ app.post("/login", (req, res) => {
       } else {
         bcrypt.compare(password, result[0].password, (err, match) => {
           if (match === true) {
-            res.json({ id: result[0].id, username });
+            const token = jwt.sign(
+              { id: result[0].id, username },
+              process.env.JWT_SECRET,
+            );
+
+            res.json({ token, id: result[0].id, username });
           } else {
             res.status(401).json({ message: "Invalid password" });
           }
