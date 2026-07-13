@@ -7,6 +7,8 @@ const authMiddleware = require("./middleware");
 app.use(express.json());
 app.use("/households", require("./routes/households"));
 app.use("/users", require("./routes/users"));
+app.use("/inventory", require("./routes/inventory"));
+app.use("/products", require("./routes/products"));
 
 app.get("/protected", authMiddleware, (req, res) => {
   res.json({ message: "You are authenticated", user: req.user });

@@ -35,7 +35,11 @@ router.post("/login", (req, res) => {
         bcrypt.compare(password, result[0].password, (err, match) => {
           if (match === true) {
             const token = jwt.sign(
-              { id: result[0].id, username },
+              {
+                id: result[0].id,
+                username,
+                household_id: result[0].household_id,
+              },
               process.env.JWT_SECRET,
             );
 
