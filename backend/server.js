@@ -5,6 +5,7 @@ const db = require("./db");
 const bcrypt = require("bcrypt");
 const express = require("express");
 const app = express();
+const authMiddleware = require("./middleware");
 
 app.use(express.json());
 app.post("/households", (req, res) => {
@@ -65,6 +66,10 @@ app.post("/login", (req, res) => {
       }
     },
   );
+});
+
+app.get("/protected", authMiddleware, (req, res) => {
+  res.json({ message: "You are authenticated", user: req.user });
 });
 
 app.listen(process.env.PORT, () => {
