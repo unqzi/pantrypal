@@ -9,6 +9,8 @@ app.use("/households", require("./routes/households"));
 app.use("/users", require("./routes/users"));
 app.use("/inventory", require("./routes/inventory"));
 app.use("/products", require("./routes/products"));
+app.use("/shopping_list", require("./routes/shopping_list"));
+app.use("/recipes", require("./routes/recipes"));
 
 app.get("/protected", authMiddleware, (req, res) => {
   res.json({ message: "You are authenticated", user: req.user });
