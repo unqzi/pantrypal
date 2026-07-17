@@ -1,0 +1,81 @@
+.login-page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 60px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+
+.login-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--text-h);
+  margin: 24px 0 4px;
+}
+
+.login-dot {
+  color: var(--accent);
+}
+
+.login-sub {
+  font-size: 14px;
+  color: var(--text);
+  margin: 0 0 28px;
+  line-height: 1.5;
+}
+
+.tab-switcher {
+  display: flex;
+  background: var(--border);
+  border-radius: 10px;
+  padding: 3px;
+  margin-bottom: 28px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.tab:focus {
+  outline: none;
+}
+
+.tab.active {
+  background: var(--card-bg);
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 14px;
+  margin-top: 8px;
+}
+
+.login-footer {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text);
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.login-link {
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 4px;
+}
